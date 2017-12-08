@@ -42,7 +42,7 @@ public class Solution {
         StringBuilder sb = new StringBuilder();
         while (cases-- > 0) {
             int pos = sc.nextInt() - 1;
-            int length = sc.nextInt();
+            int length = sc.nextInt() - pos;
             sb.append(getLcpCount(sa, lcp, pos, length));
             sb.append("\n");
         }
@@ -74,6 +74,9 @@ public class Solution {
             else
                 min = cur + 1;
         }
+        if (max == first) {
+            out.printf("%d %d %d\n", from, length, saFrom);
+        }
         return max - first;
     }
 
@@ -83,6 +86,7 @@ public class Solution {
         int sa1 = min(lcp[0][from], lcp[0][to]);
         int sa2 = max(lcp[0][from], lcp[0][to]);
         int log = lcp[1][sa2 - sa1];
+//out.printf("%d..%d = %d\n", from, to, min(lcp[log][sa1], lcp[log][sa2 - (1 << (log - 2))]));
         return min(lcp[log][sa1], lcp[log][sa2 - (1 << (log - 2))]);
     }
 
