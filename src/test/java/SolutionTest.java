@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 public class SolutionTest {
     @Test
     public void testStdout() throws Exception {
-        var buf = new ByteArrayOutputStream();
+        ByteArrayOutputStream buf = new ByteArrayOutputStream();
         System.setIn(getClass().getResourceAsStream("/input.txt"));
         System.setOut(new PrintStream(buf));
 
